@@ -1,0 +1,29 @@
+$primary-color: #007bff;
+$background-color: #eb2020;
+$table-padding: 10px;
+$row-hover-color: #e0e0e0;
+
+.infoTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: $background-color;
+
+  .headerCell {
+    background-color: $primary-color;
+    color: white;
+  }
+
+  .dataCell {
+    padding: $table-padding;
+    border: 1px solid rgb(31, 10, 10);
+    text-align: left;
+  }
+
+  .row {
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $row-hover-color;
+    }
+  }
+}
