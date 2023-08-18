@@ -21,14 +21,8 @@ const HomePage = () => {
   }, []);
   return (
     <div className={styles.homepage}>
-      <div className={styles["background-image"]}>
-        <a
-          className={styles["attribution-caption"]}
-          href="http://www.freepik.com"
-        >
-          Designed by Kotkoa / Freepik
-        </a>
-      </div>
+      <div className={styles["background-image"]} />
+      <div className={styles["homepage-title"]}>Lol</div>
       <div className={styles["homepage-content"]}>
         <HackerTable itemIds={items}></HackerTable>
       </div>

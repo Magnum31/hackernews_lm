@@ -1,6 +1,7 @@
 $primary-color: #007bff;
 $background-color: hsl(180, 39%, 67%);
 $table-padding: 10px;
+$row-color: #7cfef0;
 $row-hover-color: hsl(180, 25%, 73%);
 
 .infoTable {
@@ -14,7 +15,7 @@ $row-hover-color: hsl(180, 25%, 73%);
   }
 
   .dataCell {
-    background-color: $background-color;
+    background-color: $row-color;
     padding: $table-padding;
     border: 1px solid rgb(31, 10, 10);
     border-radius: 14px;
