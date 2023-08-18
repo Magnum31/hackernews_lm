@@ -7,7 +7,6 @@ type PropsType = {
   itemIds: number[];
 };
 const HackerTable: FunctionComponent<PropsType> = ({ itemIds }) => {
-  console.log(itemIds);
   return (
     <table className={styles.infoTable}>
       <thead>
