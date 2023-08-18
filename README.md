@@ -1,4 +1,4 @@
-#This project is the result of my work with the case provided by the recruitment agent from Lemvigh-Müller
+# This project is the result of my work with the case provided by the recruitment agent from Lemvigh-Müller
 
 ## Getting Started with Create React App
 
