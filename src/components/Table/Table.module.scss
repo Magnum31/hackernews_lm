@@ -1,13 +1,14 @@
 $primary-color: #007bff;
 $background-color: hsl(180, 39%, 67%);
-$table-padding: 10px;
+$table-padding: 0.1rem;
 $row-color: #7cfef0;
 $row-hover-color: hsl(180, 25%, 73%);
+$cell-width: 15em;
 
 .infoTable {
   width: 80%;
-  border-collapse: separate;
-  // background-color: $background-color;
+  border-collapse: collapse;
+  background-color: $background-color;
 
   .headerCell {
     background-color: $primary-color;
@@ -15,19 +16,52 @@ $row-hover-color: hsl(180, 25%, 73%);
   }
 
   .dataCell {
-    background-color: $row-color;
     padding: $table-padding;
-    border: 1px solid rgb(31, 10, 10);
-    border-radius: 14px;
     text-align: left;
-  }
+    vertical-align: middle;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: $cell-width;
 
+    &.urlCell {
+      width: 10em;
+    }
+  }
+  .row-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    min-height: 90vh;
+  }
   .row {
+    background-color: $row-color;
     transition: background-color 0.3s ease;
-    padding: 0.4rem;
+    padding: 0.1rem;
+    border-radius: 14px;
+    border: 1px solid rgb(31, 10, 10);
+    height: 7em;
+    min-width: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
 
     &:hover {
       background-color: $row-hover-color;
+    }
+  }
+  .verticalAlign {
+    width: $cell-width;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 1rem;
+
+    .label {
+      font-weight: 700;
+      margin-bottom: 0.5rem;
     }
   }
 }

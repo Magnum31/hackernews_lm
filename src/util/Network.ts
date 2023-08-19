@@ -20,7 +20,7 @@ export const apiGetTopStories = () => {
     });
 };
 
-export const apiGetStoryItem = (itemId: string): Promise<ItemType> => {
+export const apiGetStoryItem = (itemId: number): Promise<ItemType> => {
   return fetch(`${BASE_URL}/item/${itemId}.json`, {
     headers: {
       "Content-Type": "application/json",
