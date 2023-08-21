@@ -1,9 +1,6 @@
-$primary-color: #007bff;
-$background-color: hsl(180, 39%, 67%);
-$table-padding: 0.1rem;
-$row-color: #7cfef0;
-$row-hover-color: hsl(180, 25%, 73%);
-$cell-width: 15em;
+@import "variables";
+@import "mixins";
+@import "breakpoints";
 
 .infoTable {
   width: 80%;
@@ -29,15 +26,34 @@ $cell-width: 15em;
       overflow: hidden;
     }
     &.imageCell {
-      max-width: $cell-width;
+      max-width: 90%;
       overflow: hidden;
     }
   }
   .responsiveImage {
     max-inline-size: 100%;
     block-size: auto;
-    aspect-ratio: 2/1;
+    aspect-ratio: 5/1;
     object-fit: contain;
+
+    @include small {
+      display: none;
+    }
+
+    @include medium {
+      display: none;
+    }
+
+    @include large {
+      display: none;
+    }
+
+    @include extra-large {
+      display: none;
+    }
+    @include extra-extra-large {
+      display: inline-block;
+    }
   }
   .row-container {
     display: flex;
@@ -58,9 +74,25 @@ $cell-width: 15em;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
+    // overflow: hidden;
 
     &:hover {
       background-color: $row-hover-color;
+    }
+    @include very-small {
+      height: 20em;
+      font-size: small;
+    }
+    @include small {
+      font-size: small;
+      height: 10em;
+    }
+    @include medium {
+      font-size: small;
+      height: 7em;
+    }
+    @include large {
+      font-size: medium;
     }
   }
   .verticalAlign {
@@ -73,6 +105,26 @@ $cell-width: 15em;
     .label {
       font-weight: 700;
       margin-bottom: 0.5rem;
+      @include very-small {
+        margin-bottom: 0rem;
+        font-size: small;
+        font-weight: 400;
+      }
+      @include small {
+        margin-bottom: 0rem;
+        font-size: small;
+      }
+      @include medium {
+        margin-bottom: 0.1rem;
+        font-size: small;
+      }
+    }
+    @include very-small {
+      margin-right: 0.1rem;
+      flex-direction: row;
+    }
+    @include small {
+      margin-right: 0.5rem;
     }
   }
 }

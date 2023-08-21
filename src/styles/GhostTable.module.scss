@@ -1,6 +1,6 @@
-$row-color: #7cfef0;
-$row-hover-color: hsl(180, 25%, 73%);
-$cell-width: 15em;
+@import "variables";
+@import "mixins";
+@import "breakpoints";
 
 .ghostRow {
   background-color: $row-color;
@@ -43,6 +43,24 @@ $cell-width: 15em;
   width: $cell-width;
   border-radius: 20%;
   margin: 0.2rem;
+  @include small {
+    display: none;
+  }
+
+  @include medium {
+    display: none;
+  }
+
+  @include large {
+    display: none;
+  }
+
+  @include extra-large {
+    display: none;
+  }
+  @include extra-extra-large {
+    display: inline-block;
+  }
 }
 
 @keyframes loadingAnimation {

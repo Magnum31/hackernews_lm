@@ -7,8 +7,9 @@ import styles from "../../styles/Table.module.scss";
 
 type PropsType = {
   itemIds: number[];
+  refresh: () => Promise<void>;
 };
-const HackerTable: FunctionComponent<PropsType> = ({ itemIds }) => {
+const HackerTable: FunctionComponent<PropsType> = ({ itemIds, refresh }) => {
   const [items, setItems] = useState<ItemType[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -47,10 +48,7 @@ const HackerTable: FunctionComponent<PropsType> = ({ itemIds }) => {
       <thead>
         <tr>
           <th className={styles.headerCell}>
-            <button
-              className={styles.refreshButton}
-              onClick={() => refreshItems()}
-            >
+            <button className={styles.refreshButton} onClick={() => refresh()}>
               New stories
             </button>
           </th>

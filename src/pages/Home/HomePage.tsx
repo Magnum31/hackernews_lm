@@ -28,7 +28,7 @@ const HomePage = () => {
       <div className={styles["background-image"]} />
       <div className={styles["homepage-title"]}>10 hurtige fra HackerNews</div>
       <div className={styles["homepage-content"]}>
-        {itemIds && <HackerTable itemIds={itemIds} />}
+        {itemIds && <HackerTable itemIds={itemIds} refresh={refreshIds} />}
       </div>
     </div>
   );

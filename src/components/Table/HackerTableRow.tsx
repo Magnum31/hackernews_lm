@@ -41,7 +41,7 @@ const HackerTableRow: FunctionComponent<TableRowType> = ({ item }) => {
           {/*Didn't want to use a static asset, this is more fun */}
           <img
             className={styles.responsiveImage}
-            src={"https://picsum.photos/150/90"}
+            src={"https://picsum.photos/200/100"}
             alt="Relevant image"
           />
         </div>
