@@ -1,0 +1,55 @@
+$row-color: #7cfef0;
+$row-hover-color: hsl(180, 25%, 73%);
+$cell-width: 15em;
+
+.ghostRow {
+  background-color: $row-color;
+  padding: 0.1rem;
+  border-radius: 14px;
+  border: 1px solid rgb(31, 10, 10);
+  height: 7em;
+  min-width: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.ghostCell {
+  background: linear-gradient(
+    90deg,
+    $row-color 25%,
+    $row-hover-color 50%,
+    $row-color 75%
+  );
+  background-size: 200% 100%;
+  animation: loadingAnimation 1.5s infinite;
+  height: 1.5rem;
+  width: $cell-width;
+  border-radius: 4px;
+  margin: 0.2rem;
+}
+
+.ghostImage {
+  background: linear-gradient(
+    90deg,
+    $row-color 25%,
+    $row-hover-color 50%,
+    $row-color 75%
+  );
+  background-size: 200% 100%;
+  animation: loadingAnimation 1.5s infinite;
+  height: 4em;
+  width: $cell-width;
+  border-radius: 20%;
+  margin: 0.2rem;
+}
+
+@keyframes loadingAnimation {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

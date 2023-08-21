@@ -1,6 +1,6 @@
 export const formatter = (unixTime: number): string => {
   try {
-    const timestamp = new Date(unixTime);
+    const timestamp = new Date(unixTime * 1000);
     return timestamp.toLocaleString("en-Gb", {
       day: "2-digit",
       month: "2-digit",

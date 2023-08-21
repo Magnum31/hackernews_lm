@@ -5,26 +5,30 @@ import { apiGetTopStories } from "../../util/Network";
 import styles from "./Home.module.scss";
 
 const HomePage = () => {
-  const [items, setItems] = useState<number[]>([]);
+  const [itemIds, setItemIds] = useState<number[]>([]);
 
   //Requirement for the news to be random 10 stories
   const shuffleTen = (array: number[]) => {
     return array.sort(() => Math.random() - 0.5).slice(0, 10);
   };
-
-  useEffect(() => {
-    apiGetTopStories().then((res) => {
+  // Fetches the top stories' IDs from the API and shuffles them
+  const refreshIds = (): Promise<void> => {
+    return apiGetTopStories().then((res) => {
       var shuffled = shuffleTen(res);
       // console.log(shuffled);
-      setItems(shuffled);
+      setItemIds(shuffled);
     });
+  };
+  useEffect(() => {
+    refreshIds();
   }, []);
+
   return (
     <div className={styles.homepage}>
       <div className={styles["background-image"]} />
-      <div className={styles["homepage-title"]}>Lol</div>
+      <div className={styles["homepage-title"]}>10 hurtige fra HackerNews</div>
       <div className={styles["homepage-content"]}>
-        <HackerTable itemIds={items}></HackerTable>
+        {itemIds && <HackerTable itemIds={itemIds} />}
       </div>
     </div>
   );
