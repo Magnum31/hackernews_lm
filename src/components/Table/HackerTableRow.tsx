@@ -12,6 +12,7 @@ type TableRowType = {
 const HackerTableRow: FunctionComponent<TableRowType> = ({ item }) => {
   const [user, setUser] = useState<UserType>();
 
+  //Gets user data from API
   useEffect(() => {
     item.by &&
       apiGetUser(item.by).then((res) => {

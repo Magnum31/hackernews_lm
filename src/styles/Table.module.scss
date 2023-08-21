@@ -74,8 +74,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
-    // overflow: hidden;
-
+    overflow: hidden;
     &:hover {
       background-color: $row-hover-color;
     }
@@ -121,10 +120,17 @@
     }
     @include very-small {
       margin-right: 0.1rem;
-      flex-direction: row;
     }
     @include small {
       margin-right: 0.5rem;
+    }
+    @include medium {
+      margin-right: 0.5rem;
+      flex-direction: row;
+    }
+    @include large {
+      margin-right: 1rem;
+      flex-direction: column;
     }
   }
 }

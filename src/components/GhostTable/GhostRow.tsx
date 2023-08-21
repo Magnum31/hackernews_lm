@@ -1,5 +1,6 @@
 import styles from "../../styles/GhostTable.module.scss";
 const GhostRow = () => {
+  //Barebones row to show while loading
   return (
     <div className={styles.ghostRow}>
       <div className={styles.ghostCell}></div>

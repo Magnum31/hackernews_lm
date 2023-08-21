@@ -1,3 +1,4 @@
+//Item type to allow for strict typing of the item object, based on the API docs
 export type ItemType = {
   id: number;
   deleted?: boolean;

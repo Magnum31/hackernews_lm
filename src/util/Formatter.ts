@@ -1,3 +1,4 @@
+//Formatter util to handle the timestamps provided by the API
 export const formatter = (unixTime: number): string => {
   try {
     const timestamp = new Date(unixTime * 1000);
