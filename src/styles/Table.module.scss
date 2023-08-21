@@ -143,6 +143,7 @@
   padding: 0.5rem 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-right: 1rem;
 
   &:hover {
     background-color: darken($primary-color, 10%);

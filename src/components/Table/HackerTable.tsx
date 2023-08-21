@@ -12,6 +12,7 @@ type PropsType = {
 const HackerTable: FunctionComponent<PropsType> = ({ itemIds, refresh }) => {
   const [items, setItems] = useState<ItemType[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [descending, setDescending] = useState<boolean>(false);
 
   //Gets item data from API based on IDs and sorts them by score in ascending order
   const refreshItems = (): Promise<void> => {
@@ -29,9 +30,7 @@ const HackerTable: FunctionComponent<PropsType> = ({ itemIds, refresh }) => {
       // Waits for all promises to resolve before sorting and setting the state
       return Promise.all(apiPromises)
         .then(() => {
-          //TODO if time, let sort change to descending. Would be easiest to split the function in two and pass a boolean
-          list.sort((a, b) => (a.score || 0) - (b.score || 0));
-          setItems(list);
+          sortItems(list);
           setLoading(false);
         })
         .catch((err) => {
@@ -41,10 +40,24 @@ const HackerTable: FunctionComponent<PropsType> = ({ itemIds, refresh }) => {
 
     return Promise.resolve();
   };
+
+  const sortItems = (items: ItemType[]) => {
+    const sortedItems = [...items];
+    sortedItems.sort((a, b) =>
+      descending
+        ? (b.score || 0) - (a.score || 0)
+        : (a.score || 0) - (b.score || 0)
+    );
+    setItems(sortedItems);
+  };
   //Refreshes the items when the itemIds change on reload or when called from the refresh button
   useEffect(() => {
     itemIds && refreshItems();
   }, [itemIds]);
+
+  useEffect(() => {
+    sortItems(items);
+  }, [descending]);
 
   console.log(items);
   return (
@@ -52,8 +65,16 @@ const HackerTable: FunctionComponent<PropsType> = ({ itemIds, refresh }) => {
       <thead>
         <tr>
           <th className={styles.headerCell}>
+            <button
+              className={styles.refreshButton}
+              onClick={() => setDescending((e) => !e)}
+            >
+              {descending
+                ? "Sort by score (descending)"
+                : "Sort by score (ascending)"}
+            </button>
             <button className={styles.refreshButton} onClick={() => refresh()}>
-              New stories
+              Load new stories
             </button>
           </th>
         </tr>
@@ -62,8 +83,8 @@ const HackerTable: FunctionComponent<PropsType> = ({ itemIds, refresh }) => {
         {/* Handles conditional rendering of data or ghost rows */}
         {itemIds ? (
           loading || !items ? (
-            itemIds.map((id) => {
-              return <GhostRow />;
+            itemIds.map((id, key) => {
+              return <GhostRow key={key} />;
             })
           ) : items && items.length > 0 ? (
             items.map((item) => {
