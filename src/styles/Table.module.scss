@@ -1,9 +1,8 @@
 @import "variables";
 @import "mixins";
-@import "breakpoints";
 
 .infoTable {
-  width: 80%;
+  width: 70%;
   border-collapse: collapse;
   background-color: $background-color;
 
@@ -18,7 +17,11 @@
     text-align: left;
     vertical-align: middle;
     white-space: nowrap;
-    width: $cell-width;
+
+    @include very-small {
+      flex: 0 0 70%;
+      font-size: smaller;
+    }
 
     &.urlCell {
       text-overflow: ellipsis;
@@ -30,29 +33,16 @@
       overflow: hidden;
     }
   }
+
   .responsiveImage {
     max-inline-size: 100%;
     block-size: auto;
     aspect-ratio: 5/1;
     object-fit: contain;
 
-    @include small {
+    @include very-small {
       display: none;
-    }
-
-    @include medium {
-      display: none;
-    }
-
-    @include large {
-      display: none;
-    }
-
-    @include extra-large {
-      display: none;
-    }
-    @include extra-extra-large {
-      display: inline-block;
+      font-size: x-small;
     }
   }
   .row-container {
@@ -66,21 +56,30 @@
     background-color: $row-color;
     transition: background-color 0.3s ease;
     padding: 0.1rem;
-    border-radius: 14px;
+    border-radius: 10px;
     border: 1px solid rgb(31, 10, 10);
     height: 7em;
     min-width: 200px;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
     justify-content: space-evenly;
     overflow: hidden;
     &:hover {
       background-color: $row-hover-color;
     }
+
+    &:nth-child(odd) {
+      background-color: $row-color;
+    }
+
+    &:nth-child(even) {
+      background-color: $row-hover-color;
+    }
     @include very-small {
-      height: 20em;
+      height: 13em;
       font-size: small;
+      flex-wrap: wrap;
     }
     @include small {
       font-size: small;
@@ -107,7 +106,6 @@
       @include very-small {
         margin-bottom: 0rem;
         font-size: small;
-        font-weight: 400;
       }
       @include small {
         margin-bottom: 0rem;
@@ -126,7 +124,6 @@
     }
     @include medium {
       margin-right: 0.5rem;
-      flex-direction: row;
     }
     @include large {
       margin-right: 1rem;
@@ -139,18 +136,19 @@
   background-color: $primary-color;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 25px;
   padding: 0.5rem 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-right: 1rem;
+  margin: 0.6em 1.4em;
 
   &:hover {
     background-color: darken($primary-color, 10%);
+    transform: translateY(-0.2em);
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba($primary-color, 0.3);
+    box-shadow: 0 0.5em 0.5em -3px var(--hover);
   }
 }
