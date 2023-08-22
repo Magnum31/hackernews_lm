@@ -71,7 +71,11 @@ const HackerTable: FunctionComponent<PropsType> = ({ itemIds, refresh }) => {
             >
               {descending ? "Sort by score  ▼" : "Sort by score  ▲"}
             </button>
-            <button className={styles.refreshButton} onClick={() => refresh()}>
+            <button
+              disabled={loading}
+              className={styles.refreshButton}
+              onClick={() => refresh()}
+            >
               Load new stories
             </button>
           </th>

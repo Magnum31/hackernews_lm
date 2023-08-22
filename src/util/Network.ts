@@ -6,7 +6,7 @@ const BASE_URL = `https://hacker-news.firebaseio.com/v0`;
 
 //Get top stories IDs. Considered using /beststories since it does not return jobs
 export const apiGetTopStories = () => {
-  return fetch(`${BASE_URL}/topstories.json`, {
+  return fetch(`${BASE_URL}/beststories.json`, {
     headers: {
       "Content-Type": "application/json",
     },

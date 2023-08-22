@@ -14,7 +14,6 @@ const HomePage = () => {
   const refreshIds = (): Promise<void> => {
     return apiGetTopStories().then((res) => {
       var shuffled = shuffleTen(res);
-      // console.log(shuffled);
       setItemIds(shuffled);
     });
   };

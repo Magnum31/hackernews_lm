@@ -151,4 +151,8 @@
     outline: none;
     box-shadow: 0 0.5em 0.5em -3px var(--hover);
   }
+  &:disabled {
+    background-color: $disabled-color;
+    cursor: not-allowed;
+  }
 }
